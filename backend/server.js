@@ -10,7 +10,7 @@ app.use(cors()); // Enable CORS
 app.use(bodyParser.json());
 app.use('/api/network', networkRoutes);
 
-app.get('*', (req, res) => {
+app.get('/api/*', (req, res) => {
   res.redirect('https://nishanau.github.io/ComputerNetworksSolution');
 });
 
