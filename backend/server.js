@@ -10,9 +10,7 @@ app.use(cors()); // Enable CORS
 app.use(bodyParser.json());
 app.use('/api/network', networkRoutes);
 
-app.get('/api/*', (req, res) => {
-  res.redirect('https://nishanau.github.io/ComputerNetworksSolution');
-});
+
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}/`);
