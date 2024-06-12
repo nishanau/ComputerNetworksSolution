@@ -16,8 +16,8 @@ const NetworkMapping = ({ data }) => {
     const container = networkContainer.current;
     const options = {
       groups: {
-        router: { shape: 'image', image: '/router.png' },
-        switch: { shape: 'image', image: '/switch.png' },
+        router: { shape: 'image', image: '/ComputerNetworksSolution/router.png' },
+        switch: { shape: 'image', image: '/ComputerNetworksSolution/switch.png' },
         department: { shape: 'box' },
         ip: { shape: 'dot' },
         summary: { shape: 'ellipse', color: { background: '#FFDD44', border: '#FFAA00' } }
