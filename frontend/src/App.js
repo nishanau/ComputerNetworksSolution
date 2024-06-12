@@ -33,38 +33,73 @@ function App() {
     const edges = [];
 
     if (!result.subnetAllocations || !Array.isArray(result.subnetAllocations)) {
-      console.error('Invalid subnetAllocations data:', result.subnetAllocations);
-      return;
+        console.error('Invalid subnetAllocations data:', result.subnetAllocations);
+        return;
     }
 
-    const routerNode = { id: 'router', label: 'Router', group: 'router' };
+    // Router node with all its interface IPs
+    const routerNode = {
+        id: 'router',
+        label: 'Router',
+        group: 'router'
+    };
     nodes.push(routerNode);
 
     result.subnetAllocations.forEach((allocation, index) => {
-      const switchNode = { id: `switch-${index + 1}`, label: `Switch ${index + 1} (${allocation.switch_port_ip})`, group: 'switch' };
-      nodes.push(switchNode);
-      edges.push({ from: 'router', to: switchNode.id });
+        // Switch node with its IPs
+        const switchNode = {
+            id: `switch-${index + 1}`,
+            label: `Switch ${index + 1}`,
+            group: 'switch',
+            title: `To Department: ${allocation.switch_port_ip}\nTo Router: ${allocation.switch_port_ip_to_router}`
+        };
+        nodes.push(switchNode);
 
-      const departmentNode = { id: `department-${allocation.department}`, label: `Department ${allocation.department}`, group: 'department' };
-      nodes.push(departmentNode);
-      edges.push({ from: switchNode.id, to: departmentNode.id });
+        // Add the switch-to-router interface IP as a separate node
+        const switchRouterInterfaceNode = {
+            id: `switch-router-${index + 1}`,
+            label: `Switch ${index + 1} Interface to Router\n${allocation.switch_port_ip_to_router}`,
+            group: 'switch-router'
+        };
+        nodes.push(switchRouterInterfaceNode);
 
-      if (alternative) {
-        const ipNode = { id: `${allocation.department}-users`, label: `${allocation.allocated_ips_count} Users`, group: 'users' };
-        nodes.push(ipNode);
-        edges.push({ from: departmentNode.id, to: ipNode.id });
-      } else {
-        allocation.allocated_ips.forEach((ip, ipIndex) => {
-          const ipNode = { id: `${allocation.department}-${ipIndex}`, label: ip, group: 'ip' };
-          nodes.push(ipNode);
-          edges.push({ from: departmentNode.id, to: ipNode.id });
-        });
-      }
+        // Add the router interface IP as a separate node
+        const routerInterfaceNode = {
+            id: `router-interface-${index + 1}`,
+            label: `Router Interface to Switch ${index + 1}\n${allocation.router_port_ip}`,
+            group: 'router-interface'
+        };
+        nodes.push(routerInterfaceNode);
+
+        // Create edges between router and switch interface nodes
+        edges.push({ from: 'router', to: routerInterfaceNode.id });
+        edges.push({ from: routerInterfaceNode.id, to: switchRouterInterfaceNode.id });
+        edges.push({ from: switchRouterInterfaceNode.id, to: switchNode.id });
+
+        // Department node (users)
+        const departmentNode = {
+            id: `department-${allocation.department}`,
+            label: `Department ${allocation.department}`,
+            group: 'department'
+        };
+        nodes.push(departmentNode);
+        edges.push({ from: switchNode.id, to: departmentNode.id, label: allocation.switch_port_ip });
+
+        if (alternative) {
+            const ipNode = { id: `${allocation.department}-users`, label: `${allocation.allocated_ips_count} Users`, group: 'users' };
+            nodes.push(ipNode);
+            edges.push({ from: departmentNode.id, to: ipNode.id });
+        } else {
+            allocation.allocated_ips.forEach((ip, ipIndex) => {
+                const ipNode = { id: `${allocation.department}-${ipIndex}`, label: ip, group: 'ip' };
+                nodes.push(ipNode);
+                edges.push({ from: departmentNode.id, to: ipNode.id });
+            });
+        }
     });
 
     setNetworkData({ nodes, edges });
-  };
-
+};
   const toggleView = () => {
     if (result.subnetAllocations.length === 0) {
       alert('Please submit the network configuration first.');
