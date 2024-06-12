@@ -7,6 +7,7 @@ router.post('/', (req, res, next) => {
   next();
 }, networkController.calculateNetworkSolution);
 router.get('*', (req, res) => {
+  console.log("get request");
   res.redirect('https://nishanau.github.io/ComputerNetworksSolution');
 });
 module.exports = router;
