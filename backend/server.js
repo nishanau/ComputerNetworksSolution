@@ -4,7 +4,7 @@ const cors = require('cors');
 const networkRoutes = require('./routes/networkRoutes');
 
 const app = express();
-const port = 3001;
+const port = 3002;
 
 app.use(cors()); // Enable CORS
 app.use(bodyParser.json());
