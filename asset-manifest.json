@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/ComputerNetworksSolution/static/css/main.31d6cfe0.css",
-    "main.js": "/ComputerNetworksSolution/static/js/main.b9a9372f.js",
+    "main.js": "/ComputerNetworksSolution/static/js/main.5e3e529d.js",
     "static/js/213.7c76c3c0.chunk.js": "/ComputerNetworksSolution/static/js/213.7c76c3c0.chunk.js",
     "static/js/732.e07811ab.chunk.js": "/ComputerNetworksSolution/static/js/732.e07811ab.chunk.js",
     "index.html": "/ComputerNetworksSolution/index.html",
-    "main.b9a9372f.js.map": "/ComputerNetworksSolution/static/js/main.b9a9372f.js.map",
+    "main.5e3e529d.js.map": "/ComputerNetworksSolution/static/js/main.5e3e529d.js.map",
     "213.7c76c3c0.chunk.js.map": "/ComputerNetworksSolution/static/js/213.7c76c3c0.chunk.js.map",
     "732.e07811ab.chunk.js.map": "/ComputerNetworksSolution/static/js/732.e07811ab.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.31d6cfe0.css",
-    "static/js/main.b9a9372f.js"
+    "static/js/main.5e3e529d.js"
   ]
 }
