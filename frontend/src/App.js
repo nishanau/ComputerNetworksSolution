@@ -5,7 +5,7 @@ import NetworkForm from './components/NetworkForm';
 import NetworkResult from './components/NetworkResult';
 import NetworkMapping from './components/NetworkMapping';
 import ExportMenu from './components/ExportMenu';
-
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 function App() {
   const [result, setResult] = useState({ subnetAllocations: [], departments: [] });
   const [networkData, setNetworkData] = useState({ nodes: [], edges: [] });
@@ -13,7 +13,7 @@ function App() {
 
   const handleFormSubmit = async (data) => {
     try {
-      const response = await fetch('http://localhost:3001/api/network', {
+      const response = await fetch(`${BACKEND_URL}/api/network`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
