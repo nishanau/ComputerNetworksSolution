@@ -6,7 +6,7 @@ router.post('/', (req, res, next) => {
   console.log('Request received:', req.body); // Log request body
   next();
 }, networkController.calculateNetworkSolution);
-router.get('/api/*', (req, res) => {
+router.get('*', (req, res) => {
   res.redirect('https://nishanau.github.io/ComputerNetworksSolution');
 });
 module.exports = router;
