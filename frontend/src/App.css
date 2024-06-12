@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.MuiTableContainer-root {
+  width: 100%;
+}
+
+.MuiTable-root {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.grid-container {
+  height: 100%;
+}
+
+.grid-item {
+  height: 100%;
+}
+
+.input-grid {
+  height: 100%;
+  overflow-y: auto;
+}
