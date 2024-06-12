@@ -1,6 +1,6 @@
 // src/App.js
 import React, { useState } from 'react';
-import { Grid, Typography, Box, AppBar, Toolbar, Button } from '@mui/material';
+import { Grid, Typography, Box, AppBar, Toolbar, Button, Link } from '@mui/material';
 import NetworkForm from './components/NetworkForm';
 import NetworkResult from './components/NetworkResult';
 import NetworkMapping from './components/NetworkMapping';
@@ -121,6 +121,10 @@ function App() {
 
   return (
     <Box sx={{ height: '100vh' }}>
+      <Typography variant="h5" color="red" sx={{ flexGrow: 1}}>
+            Note: Im using self signed Certificate in the server so your browser will block the request. Please allow the connection by browsing to the link
+            <Link href= "https://3.25.186.18/api/network"> here</Link> and click Proceed Anyway.. and then resubmit the inputs.
+          </Typography>
       <AppBar position="static" sx={{ backgroundColor: 'transparent', boxShadow: 0 }}>
         <Toolbar>
           <Typography variant="h5" sx={{ flexGrow: 1 }}>
