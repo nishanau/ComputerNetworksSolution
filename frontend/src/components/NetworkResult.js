@@ -35,11 +35,10 @@ function NetworkResult({ result }) {
             <TableHead>
                 <TableRow>
                     <TableCell>Department</TableCell>
-                    <TableCell>Required Users</TableCell>
                     <TableCell>Network IP</TableCell>
                     <TableCell>Subnet Mask</TableCell>
                     <TableCell>Wildcard Mask</TableCell>
-                    <TableCell>Number of IPs</TableCell>
+                    <TableCell>Number of usable IPs </TableCell>
                     <TableCell>IP Range</TableCell>
                     <TableCell>Switch Port IP</TableCell>
                 </TableRow>
@@ -48,7 +47,6 @@ function NetworkResult({ result }) {
                 {result.subnetAllocations.map((allocation, index) => (
                     <TableRow key={index}>
                         <TableCell>{allocation.department}</TableCell>
-                        <TableCell>{allocation.allocated_ips_count}</TableCell>
                         <TableCell>{allocation.subnet}</TableCell>
                         <TableCell>{allocation.subnet_mask}</TableCell>
                         <TableCell>{allocation.wildcard_mask}</TableCell>
