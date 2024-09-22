@@ -7,4 +7,8 @@ router.post('/', (req, res, next) => {
   next();
 }, networkController.calculateNetworkSolution);
 
+router.get('/', (req, res) => {
+  res.redirect('/'); // Redirect to the desired default page
+});
+
 module.exports = router;
